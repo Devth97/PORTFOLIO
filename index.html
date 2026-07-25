@@ -557,6 +557,58 @@
     }
     .card-link:hover { text-decoration: underline; }
 
+    /* ── PROJECT FILTERS & ACTIONS ── */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: var(--border);
+      box-shadow: var(--shadow-sm);
+      background: var(--bg);
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .filter-btn:hover {
+      background: var(--green);
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .filter-btn.active {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .live-badge {
+      padding: 3px 10px;
+      background: var(--blue);
+      color: #ffffff;
+      border: 2px solid var(--ink);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
     /* ── CONTACT PAGE ── */
     .contact-grid {
       display: grid;
@@ -995,8 +1047,8 @@
               <span class="stat-label">Internships</span>
             </div>
             <div class="stat-row">
-              <span class="stat-num">3+</span>
-              <span class="stat-label">Major Projects</span>
+              <span class="stat-num" style="color:var(--blue);">10+</span>
+              <span class="stat-label">Live Vercel Apps</span>
             </div>
           </div>
         </div>
@@ -1167,199 +1219,296 @@
   ════════════════════════════════════════════ -->
   <section class="page" id="page-projects">
     <div class="page-header anim anim-1">
-      <h1>// PROJECTS</h1>
-      <p class="sub">[ SELECTED WORK ]</p>
+      <h1>// PROJECTS &amp; WEBSITES</h1>
+      <p class="sub">[ ALL LIVE VERCEL DEPLOYMENTS &amp; BUILT APPS ]</p>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar anim anim-2">
+      <button class="filter-btn active" onclick="filterProjects('all', this)">ALL PROJECTS (12)</button>
+      <button class="filter-btn" onclick="filterProjects('ecom', this)">LIVE E-COMMERCE &amp; SAAS</button>
+      <button class="filter-btn" onclick="filterProjects('ai', this)">AI &amp; DEV TOOLS</button>
+      <button class="filter-btn" onclick="filterProjects('awards', this)">STARTUP &amp; AWARDS</button>
     </div>
 
     <div class="projects-grid">
 
-      <!-- VR FURNITURE APP — FEATURED -->
-      <article class="project-card featured anim anim-2">
+      <!-- VERONA BY MANGALADEVI JEWELLERS — FEATURED -->
+      <article class="project-card featured anim anim-2" data-category="ecom">
+        <div class="card-top">
+          <span class="card-name">VERONA by Mangaladevi Jewellers</span>
+          <div class="card-badges">
+            <span class="startup-badge">💎 LUXURY D2C</span>
+            <span class="live-badge">⚡ VERCEL LIVE</span>
+            <span class="stack-tag">Next.js</span>
+            <span class="stack-tag">Tailwind</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          D2C Luxury Jewellery E-Commerce store featuring 3D curved ring carousels, PDP countdown offers, international currency switcher, and AI studio photography. Built for high-conversion web shopping.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">Next.js 14</span>
+          <span class="stack-tag" style="margin-right:6px;">Firebase SMS</span>
+          <span class="stack-tag" style="margin-right:6px;">3D Math Carousel</span>
+          <span class="stack-tag">Google Maps API</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://verona-bay.vercel.app" target="_blank" rel="noopener" style="font-size:11px;">Visit Website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/Devth97/Verona" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- ORNALENS — FEATURED -->
+      <article class="project-card featured anim anim-2" data-category="ecom">
+        <div class="card-top">
+          <span class="card-name">Ornalens</span>
+          <div class="card-badges">
+            <span class="startup-badge">🌐 ORNALENS.IN</span>
+            <span class="live-badge">⚡ LIVE SAAS</span>
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">AI Vision</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          AI-powered virtual try-on engine and B2B SaaS platform for jewelry and eyewear retailers. Enables customers to inspect and preview products in real-time.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">AI Try-On</span>
+          <span class="stack-tag" style="margin-right:6px;">SaaS Portal</span>
+          <span class="stack-tag">Tailwind CSS</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://ornalens.in" target="_blank" rel="noopener" style="font-size:11px;">Visit Website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/Devth97/ornalens" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- THAMANVI E-COMMERCE -->
+      <article class="project-card anim anim-3" data-category="ecom">
+        <div class="card-top">
+          <span class="card-name">Thamanvi E-Commerce</span>
+          <div class="card-badges">
+            <span class="startup-badge">🌐 THAMANVI.COM</span>
+            <span class="stack-tag">Next.js</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          Ethnic fashion &amp; saree apparel e-commerce store with curated product showcases, smooth collection navigation, and mobile-optimized checkout workflows.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">Next.js</span>
+          <span class="stack-tag" style="margin-right:6px;">Fashion Tech</span>
+          <span class="stack-tag">Tailwind CSS</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://thamanvi.com" target="_blank" rel="noopener" style="font-size:11px;">Visit Website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/Devth97/thamanviecom" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- NISHMA CAFE -->
+      <article class="project-card anim anim-3" data-category="ecom">
+        <div class="card-top">
+          <span class="card-name">Nishma Cafe</span>
+          <div class="card-badges">
+            <span class="live-badge">⚡ VERCEL LIVE</span>
+            <span class="stack-tag">React</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          Modern restaurant &amp; cafe web application featuring an interactive digital food menu, dish category filtering, modal order flows, and responsive styling.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">React.js</span>
+          <span class="stack-tag" style="margin-right:6px;">Food UI</span>
+          <span class="stack-tag">Tailwind CSS</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://nishmacafe.vercel.app" target="_blank" rel="noopener" style="font-size:11px;">Visit Website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/Devth97/nishmacafe" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- PROMPTPACK -->
+      <article class="project-card anim anim-3" data-category="ai">
+        <div class="card-top">
+          <span class="card-name">PromptPack</span>
+          <div class="card-badges">
+            <span class="startup-badge">🌐 PROMPTPACK.TECH</span>
+            <span class="stack-tag">Next.js</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          AI Prompt engineering platform featuring highlight carousels, prompt template libraries, and creator productivity tools for LLM developers.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">TypeScript</span>
+          <span class="stack-tag" style="margin-right:6px;">AI Prompts</span>
+          <span class="stack-tag">Next.js</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://promptpack.tech" target="_blank" rel="noopener" style="font-size:11px;">Visit Website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/Devth97/PROMPTPACK" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- AI LEAD SCRAPER -->
+      <article class="project-card anim anim-4" data-category="ai">
+        <div class="card-top">
+          <span class="card-name">AI Lead Scraper</span>
+          <div class="card-badges">
+            <span class="live-badge">⚡ VERCEL LIVE</span>
+            <span class="stack-tag">AI / Scraping</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          Intelligent B2B lead generation &amp; automated web scraping web application. Extracts targeted company data, contact details, and insights using LLMs.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">Python / Node</span>
+          <span class="stack-tag" style="margin-right:6px;">Web Scraping</span>
+          <span class="stack-tag">AI LLM</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://ai-lead-scraper-orcin.vercel.app" target="_blank" rel="noopener" style="font-size:11px;">Visit Website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- ENGINEERKIT AI -->
+      <article class="project-card anim anim-4" data-category="ai">
+        <div class="card-top">
+          <span class="card-name">EngineerKit AI</span>
+          <div class="card-badges">
+            <span class="live-badge">⚡ VERCEL LIVE</span>
+            <span class="stack-tag">Dev Tools</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          Developer utility suite providing AI-assisted code generation, architecture documentation, schema converters, and engineering automation workflows.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">TypeScript</span>
+          <span class="stack-tag" style="margin-right:6px;">Next.js</span>
+          <span class="stack-tag">AI Workflows</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://engineerkit-ai.vercel.app" target="_blank" rel="noopener" style="font-size:11px;">Visit Website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- TAXFLOW AI ASSISTANT -->
+      <article class="project-card anim anim-4" data-category="ai">
+        <div class="card-top">
+          <span class="card-name">TaxFlow AI Assistant</span>
+          <div class="card-badges">
+            <span class="live-badge">⚡ VERCEL LIVE</span>
+            <span class="stack-tag">FinTech AI</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          Smart financial &amp; tax assistant web application simplifying income tax calculations, document analysis, deduction recommendations, and compliance rules.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">React</span>
+          <span class="stack-tag" style="margin-right:6px;">FinTech</span>
+          <span class="stack-tag">AI Assistant</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://taxflow-ai-assistant.vercel.app" target="_blank" rel="noopener" style="font-size:11px;">Visit Website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- FITLOOK MS13 -->
+      <article class="project-card anim anim-4" data-category="ai">
+        <div class="card-top">
+          <span class="card-name">Fitlook MS13</span>
+          <div class="card-badges">
+            <span class="live-badge">⚡ VERCEL LIVE</span>
+            <span class="stack-tag">Fashion AI</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          AI fashion measurement &amp; outfit styling web app. Combines computer vision with generative models for size fitting recommendations and visual lookbooks.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">React</span>
+          <span class="stack-tag" style="margin-right:6px;">Computer Vision</span>
+          <span class="stack-tag">Fashion Tech</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://fitlookms13.vercel.app" target="_blank" rel="noopener" style="font-size:11px;">Visit Website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/Devth97/fitlookms13" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- GROWPLUS — FEATURED STARTUP -->
+      <article class="project-card featured anim anim-2" data-category="awards">
+        <div class="card-top">
+          <span class="card-name">GrowPlus</span>
+          <div class="card-badges">
+            <span class="startup-badge">🚀 STARTUP</span>
+            <span class="live-badge">🌐 GROWPLUS.SITE</span>
+            <span class="stack-tag">Full-Stack</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          My startup — an intelligent growth solutions platform helping businesses scale through data-driven strategies, automation pipelines, and AI-powered tooling.
+        </p>
+        <div style="margin-bottom:10px;">
+          <span class="stack-tag" style="margin-right:6px;">JavaScript</span>
+          <span class="stack-tag" style="margin-right:6px;">Automation</span>
+          <span class="stack-tag">Growth Engineering</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-filled" href="https://growplus.site" target="_blank" rel="noopener" style="font-size:11px;">Visit GrowPlus ↗</a>
+        </div>
+      </article>
+
+      <!-- VR FURNITURE APP -->
+      <article class="project-card anim anim-3" data-category="awards">
         <div class="card-top">
           <span class="card-name">VR Furniture App</span>
           <div class="card-badges">
             <span class="startup-badge">🥇 1ST PRIZE</span>
             <span class="stack-tag">React Native</span>
-            <span class="stack-tag">Firebase</span>
           </div>
         </div>
         <p class="card-desc">
-          Revolutionary mobile app letting users immersively preview furniture in their space using
-          <strong>Virtual Reality</strong>. Built with React Native, Firebase backend, and Sketchfab API
-          for 3D models. Won <strong>1st Prize at Tackle Startup Hackathon 2024</strong>.
+          Immersive mobile app allowing users to preview 3D furniture models in virtual reality space. Built with React Native, Firebase, and Sketchfab API. Won 1st Prize at Tackle Startup Hackathon 2024.
         </p>
         <div style="margin-bottom:10px;">
-          <span class="stack-tag" style="margin-right:6px;">VR Core</span>
+          <span class="stack-tag" style="margin-right:6px;">React Native</span>
           <span class="stack-tag" style="margin-right:6px;">Sketchfab API</span>
-          <span class="stack-tag">3D / WebVR</span>
+          <span class="stack-tag">Firebase</span>
         </div>
-        <div style="margin-top:16px;">
-          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">View on GitHub →</a>
+        <div class="card-actions">
+          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
         </div>
       </article>
 
       <!-- AGRIHIRE CHATBOT -->
-      <article class="project-card anim anim-3">
+      <article class="project-card anim anim-3" data-category="awards">
         <div class="card-top">
           <span class="card-name">AgriHire Chatbot</span>
           <div class="card-badges">
-            <span class="startup-badge">🏆 AWARD</span>
+            <span class="startup-badge">🏆 HACKATHON AWARD</span>
             <span class="stack-tag">Dialogflow</span>
           </div>
         </div>
         <p class="card-desc">
-          WhatsApp-based chatbot connecting farmers with agricultural workers — intelligent matching, number masking for privacy, and automated hiring workflow. Award-winning project.
+          WhatsApp-based chatbot connecting farmers with agricultural workers — featuring intelligent worker matching, number masking for privacy, and automated hiring workflows.
         </p>
         <div style="margin-bottom:10px;">
           <span class="stack-tag" style="margin-right:6px;">WhatsApp API</span>
           <span class="stack-tag" style="margin-right:6px;">Node.js</span>
           <span class="stack-tag">MongoDB</span>
         </div>
-        <div style="margin-top:16px;">
-          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">View on GitHub →</a>
-        </div>
-      </article>
-
-      <!-- 3D PROPERTY LISTING -->
-      <article class="project-card anim anim-3">
-        <div class="card-top">
-          <span class="card-name">3D Property Listing</span>
-          <div class="card-badges">
-            <span class="stack-tag">React.js</span>
-            <span class="stack-tag">Three.js</span>
-          </div>
-        </div>
-        <p class="card-desc">
-          Immersive real estate platform with 360° virtual property tours — like Google Street View for interiors. Complete property management system with 3D walkthroughs.
-        </p>
-        <div style="margin-bottom:10px;">
-          <span class="stack-tag" style="margin-right:6px;">Node.js</span>
-          <span class="stack-tag">MongoDB</span>
-        </div>
-        <div style="margin-top:16px;">
-          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">View on GitHub →</a>
-        </div>
-      </article>
-
-      <!-- GROWPLUS — FEATURED -->
-      <article class="project-card featured anim anim-2">
-        <div class="card-top">
-          <span class="card-name">GrowPlus</span>
-          <div class="card-badges">
-            <span class="startup-badge">🚀 STARTUP</span>
-            <span class="stack-tag">JavaScript</span>
-          </div>
-        </div>
-        <p class="card-desc">
-          My startup — an intelligent growth solutions platform helping businesses scale
-          through data-driven strategies, automation pipelines, and AI-powered tooling.
-          Building the future of growth engineering.
-        </p>
-        <a class="card-link" href="https://growplus.site" target="_blank" rel="noopener">
-          growplus.site →
-        </a>
-        <div style="margin-top:16px;">
-          <a class="btn btn-outline" href="https://growplus.site" target="_blank" rel="noopener" style="font-size:11px;">View on GitHub →</a>
-        </div>
-      </article>
-
-      <!-- VIDAI -->
-      <article class="project-card anim anim-3">
-        <div class="card-top">
-          <span class="card-name">VIDAI</span>
-          <div class="card-badges">
-            <span class="stack-tag">TypeScript</span>
-          </div>
-        </div>
-        <p class="card-desc">
-          Automated AI video generation &amp; editing pipeline. End-to-end system for
-          producing and editing video content using AI models and intelligent automation.
-        </p>
-        <a class="card-link" href="https://github.com/Devth97" target="_blank" rel="noopener">
-          github.com/Devth97 →
-        </a>
-        <div style="margin-top:16px;">
-          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">View on GitHub →</a>
-        </div>
-      </article>
-
-      <!-- FITLOOK -->
-      <article class="project-card anim anim-3">
-        <div class="card-top">
-          <span class="card-name">FITLOOK</span>
-          <div class="card-badges">
-            <span class="stack-tag">TypeScript</span>
-          </div>
-        </div>
-        <p class="card-desc">
-          Body measurement &amp; outfit generation platform. Combines computer vision with
-          generative AI to provide personalized fashion recommendations and size fitting.
-        </p>
-        <a class="card-link" href="https://github.com/Devth97" target="_blank" rel="noopener">
-          github.com/Devth97 →
-        </a>
-        <div style="margin-top:16px;">
-          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">View on GitHub →</a>
-        </div>
-      </article>
-
-      <!-- N8N-TOOLS -->
-      <article class="project-card anim anim-4">
-        <div class="card-top">
-          <span class="card-name">n8n-tools</span>
-          <div class="card-badges">
-            <span class="stack-tag">Workflows</span>
-          </div>
-        </div>
-        <p class="card-desc">
-          Custom n8n automation tools including a LinkedIn auto-posting integration.
-          Workflow automations for social media, content pipelines, and developer tooling.
-        </p>
-        <a class="card-link" href="https://github.com/Devth97" target="_blank" rel="noopener">
-          github.com/Devth97 →
-        </a>
-        <div style="margin-top:16px;">
-          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">View on GitHub →</a>
-        </div>
-      </article>
-
-      <!-- PROJECT_ASSIST -->
-      <article class="project-card anim anim-4">
-        <div class="card-top">
-          <span class="card-name">project_assist</span>
-          <div class="card-badges">
-            <span class="stack-tag">TypeScript</span>
-          </div>
-        </div>
-        <p class="card-desc">
-          AI-powered project assistance tool. Helps developers manage tasks, generate
-          boilerplate, and get intelligent suggestions throughout the development lifecycle.
-        </p>
-        <a class="card-link" href="https://github.com/Devth97" target="_blank" rel="noopener">
-          github.com/Devth97 →
-        </a>
-        <div style="margin-top:16px;">
-          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">View on GitHub →</a>
-        </div>
-      </article>
-
-      <!-- VOICE-CHAT-FOR-ROHAN -->
-      <article class="project-card anim anim-5">
-        <div class="card-top">
-          <span class="card-name">voice-chat-for-rohan</span>
-          <div class="card-badges">
-            <span class="stack-tag">Python</span>
-          </div>
-        </div>
-        <p class="card-desc">
-          A voice chat application built in Python — real-time voice communication
-          tool with clean architecture and audio processing capabilities.
-        </p>
-        <a class="card-link" href="https://github.com/Devth97" target="_blank" rel="noopener">
-          github.com/Devth97 →
-        </a>
-        <div style="margin-top:16px;">
-          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">View on GitHub →</a>
+        <div class="card-actions">
+          <a class="btn btn-outline" href="https://github.com/Devth97" target="_blank" rel="noopener" style="font-size:11px;">GitHub Repo ↗</a>
         </div>
       </article>
 
@@ -1522,6 +1671,22 @@
     // Show target tab
     const target = document.getElementById(tabId);
     if (target) target.style.display = 'block';
+  }
+
+  // ── PROJECT FILTERING ──
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+      const cardCat = card.getAttribute('data-category');
+      if (cat === 'all' || cardCat === cat) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
   }
 
   // ── MOBILE MENU ──
